@@ -20,10 +20,13 @@ public class GetController {
     }
     // public String getMultiParameter(@RequestParam String id,) => 이렇게 파라메터가 많게 되는 경우는 모델을 쓴다
     @GetMapping("/getMultiParameter")
-    public String getMultiParameter(SearchParam searchParam){
+    //json 형태로 리턴하기 위해 리턴 타입을 모델로 설정한다
+    //springboot 에서 jackson 을 통해서 알아서 반환해줌
+    public SearchParam getMultiParameter(SearchParam searchParam){
         System.out.println(searchParam.getAccount());
         System.out.println(searchParam.getEmail());
         System.out.println(searchParam.getPage());
-        return "success";
+        // 리턴 모델
+        return searchParam;
     }
 }
